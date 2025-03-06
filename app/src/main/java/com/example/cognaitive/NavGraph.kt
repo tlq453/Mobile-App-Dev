@@ -18,7 +18,7 @@ fun NavGraph(navController: NavHostController) {
         composable("ProfileLandingScreen") { ProfileLandingScreen(navController = navController) }
         composable("CardPairGameScreen") { CardPairGameScreen(navController = navController) }
         composable("MazeGameScreen") { MazeGameScreen(navController = navController) }
-        composable("GameResultScreen"){GameResultScreen}
+        composable("GameResultScreen"){GameResultScreen(navController = navController)}
 
     }
 }
