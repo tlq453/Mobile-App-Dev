@@ -1,24 +1,36 @@
 package com.example.cognaitive
 
+import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
 
 //Insert Route here
-
-
-
-fun NavGraph(navController: NavHostController) {
+@Composable
+fun GameGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = "ProfileSelectionPage"  // Define where to start
+        startDestination = "profile_graph"
     ) {
-        // Add in the params if needed
-        composable("ProfileSelectionScreen") { ProfileSelectionScreen(navController = navController) }
-        composable("CreateProfileScreen") { CreateProfileScreen(navController = navController) }
-        composable("ProfileLandingScreen") { ProfileLandingScreen(navController = navController) }
-        composable("CardPairGameScreen") { CardPairGameScreen(navController = navController) }
-        composable("MazeGameScreen") { MazeGameScreen(navController = navController) }
-        composable("GameResultScreen"){GameResultScreen(navController = navController)}
-
+        navigation(startDestination = Screen.ProfileSelectionScreen.route, route = "profile_graph") {
+            composable(route = Screen.ProfileSelectionScreen.route) { ProfileSelectionScreen(navController = navController) }
+            composable(route = Screen.CreateProfileScreen.route) { CreateProfileScreen(navController = navController) }
+        }
+        navigation(startDestination = Screen.ProfileLandingScreen.route, route = "main_graph") {
+            composable(route = Screen.ProfileLandingScreen.route) { ProfileLandingScreen(navController = navController) }
+            composable(route = Screen.CardPairGameScreen.route) { CardPairGameScreen(navController = navController) }
+//            composable(route = Screen.MazeGameScreen.route) { MazeGameScreen(navController = navController) }
+            composable(route = Screen.GameResultScreen.route) { GameResultScreen(navController = navController) }
+        }
     }
+}
+
+sealed class Screen(val route: String) {
+    object ProfileSelectionScreen: Screen(route = "ProfileSelectionScreen")
+    object CreateProfileScreen: Screen(route = "CreateProfileScreen")
+    object ProfileLandingScreen: Screen(route = "ProfileLandingScreen")
+    object CardPairGameScreen: Screen(route = "ProfileSelectionScreen")
+    object MazeGameScreen: Screen(route = "CreateProfileScreen")
+    object GameResultScreen: Screen(route = "ProfileLandingScreen")
 }
