@@ -13,3 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+random_images/*
+generateImages.sh
+card_image19.jpg
+card_image[2-9][0-9].jpg
+card_image100.jpg
