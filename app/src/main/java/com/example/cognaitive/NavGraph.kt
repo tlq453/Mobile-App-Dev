@@ -30,7 +30,7 @@ sealed class Screen(val route: String) {
     object ProfileSelectionScreen: Screen(route = "ProfileSelectionScreen")
     object CreateProfileScreen: Screen(route = "CreateProfileScreen")
     object ProfileLandingScreen: Screen(route = "ProfileLandingScreen")
-    object CardPairGameScreen: Screen(route = "ProfileSelectionScreen")
-    object MazeGameScreen: Screen(route = "CreateProfileScreen")
-    object GameResultScreen: Screen(route = "ProfileLandingScreen")
+    object CardPairGameScreen: Screen(route = "CardPairGameScreen")
+    object MazeGameScreen: Screen(route = "MazeGameScreen")
+    object GameResultScreen: Screen(route = "GameResultScreen")
 }
