@@ -5,6 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.example.cognaitive.screens.HomeScreen
+import com.example.cognaitive.screens.ProfileSelectionScreen
 
 //Insert Route here
 @Composable
@@ -13,7 +15,8 @@ fun GameGraph(navController: NavHostController) {
         navController = navController,
         startDestination = "profile_graph"
     ) {
-        navigation(startDestination = Screen.ProfileSelectionScreen.route, route = "profile_graph") {
+        navigation(startDestination = Screen.HomeScreen.route, route = "profile_graph") {
+            composable(route = Screen.HomeScreen.route) { HomeScreen(navController = navController) }
             composable(route = Screen.ProfileSelectionScreen.route) { ProfileSelectionScreen(navController = navController) }
             composable(route = Screen.CreateProfileScreen.route) { CreateProfileScreen(navController = navController) }
         }
@@ -28,6 +31,7 @@ fun GameGraph(navController: NavHostController) {
 }
 
 sealed class Screen(val route: String) {
+    object HomeScreen: Screen(route = "HomeScreen")
     object ProfileSelectionScreen: Screen(route = "ProfileSelectionScreen")
     object CreateProfileScreen: Screen(route = "CreateProfileScreen")
     object ProfileLandingScreen: Screen(route = "ProfileLandingScreen")
